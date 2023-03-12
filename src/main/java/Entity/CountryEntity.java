@@ -1,6 +1,7 @@
 package Entity;
 
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -15,7 +16,8 @@ import java.util.Set;
 public class CountryEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private Long id;
 
     private String photo;
@@ -34,10 +36,11 @@ public class CountryEntity {
     @Column(name = "continent:Id", nullable = false)//Con este atributo defino columna que no puede ser nula y va a tener un id de continente. Y se Joinea con la table del continente a travez del id.
     private Long continentId;
 
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
+    @ManyToMany(
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
     @JoinTable(name = "icon_country",//Tabla intermedia
             joinColumns = @JoinColumn (name = "country_id"), //Con que dato joinea entre tablas
             inverseJoinColumns = @JoinColumn(name = "icon_id"))//De manera inversa el joinable
