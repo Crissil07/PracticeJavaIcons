@@ -1,6 +1,6 @@
-package Repository;
+package com.icon.Practice.Repository;
 
-import Entity.IconEntity;
+import com.icon.Practice.Entity.IconEntity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

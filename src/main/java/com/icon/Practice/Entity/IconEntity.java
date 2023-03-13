@@ -1,11 +1,10 @@
-package Entity;
+package com.icon.Practice.Entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -20,8 +19,7 @@ import java.util.List;
 public class IconEntity {
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String photo;

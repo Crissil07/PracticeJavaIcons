@@ -1,4 +1,4 @@
-package Entity;
+package com.icon.Practice.Entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -19,8 +19,7 @@ import java.util.Set;
 public class CountryEntity {
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String photo;

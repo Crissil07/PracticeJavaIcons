@@ -1,14 +1,10 @@
-package Entity;
+package com.icon.Practice.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
 
 @Table(name = "continent")//Le digo que tabla va a usar.
 @Data
@@ -19,8 +15,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class ContinentEntity {
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")//Genera una secuencia de Id: 1,2,3,4,5...
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String photo;
