@@ -1,10 +1,12 @@
 package Entity;
 
-import lombok.*;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
-
-import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +35,7 @@ public class IconEntity {
 
     private String history;
 
-    @ManyToMany(mappedBy = "icons", cascade = CascadeType.ALL)//En la relacion many to many con paises, icons se va a hacer cargo. La definicion esta en el Set (atributo) de la entidad pais
+   @ManyToMany(mappedBy = "icons", cascade = CascadeType.ALL)//En la relacion many to many con paises, icons se va a hacer cargo. La definicion esta en el Set (atributo) de la entidad pais
     private List<CountryEntity> country = new ArrayList<>();
 
 }
