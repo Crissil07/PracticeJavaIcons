@@ -33,7 +33,10 @@ public class IconEntity {
 
     private String history;
 
-   @ManyToMany(mappedBy = "icons", cascade = CascadeType.ALL)//En la relacion many to many con paises, icons se va a hacer cargo. La definicion esta en el Set (atributo) de la entidad pais
+   @ManyToMany(mappedBy = "icons", cascade = CascadeType.ALL)
+   //Cuando creo el Icono, no puedo pasarle una lista de paises, ya quien se hace cargo de la relacion es el pais.
+   //Defino esto con el mappedBy
+   //La definicion esta en el Set (atributo) de la entidad pais
     private List<CountryEntity> country = new ArrayList<>();
 
 }
