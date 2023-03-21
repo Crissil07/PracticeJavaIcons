@@ -26,7 +26,7 @@ public class ContinentController {
     public ResponseEntity<ContinentDTO> save(@RequestBody ContinentDTO continent){
         //Guardar continente
         ContinentDTO savedContinent = continentService.save(continent);
-;        //201, continente guardado
+        //201, continente guardado
         return ResponseEntity.status(HttpStatus.CREATED).body(savedContinent);
     }
 

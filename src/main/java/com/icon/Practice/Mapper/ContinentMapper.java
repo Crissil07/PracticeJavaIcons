@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ContinentMapper {
 
+    //Llega el DTO para convertirse a Entity
     public ContinentEntity continentDTO2Entity(ContinentDTO dto){
 
         ContinentEntity continentEntity = new ContinentEntity();
@@ -17,6 +18,7 @@ public class ContinentMapper {
         return continentEntity;
     }
 
+    //Llega Entity para convertirse a DTO
     public ContinentDTO ContinentEntity2DTO (ContinentEntity contEntity){
 
         ContinentDTO continentDTO = new ContinentDTO();
