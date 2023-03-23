@@ -4,6 +4,9 @@ import com.icon.Practice.DTO.ContinentDTO;
 import com.icon.Practice.Entity.ContinentEntity;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class ContinentMapper {
 
@@ -19,7 +22,7 @@ public class ContinentMapper {
     }
 
     //Llega Entity para convertirse a DTO
-    public ContinentDTO ContinentEntity2DTO (ContinentEntity contEntity){
+    public ContinentDTO continentEntity2DTO (ContinentEntity contEntity){
 
         ContinentDTO continentDTO = new ContinentDTO();
 
@@ -29,6 +32,18 @@ public class ContinentMapper {
 
         return continentDTO;
 
+    }
+
+    //Con este metodo, recorro la lista de continentes que me llega por parametro. Traigo una lista de entidad
+    public List<ContinentDTO> continentEntityList2DTOList (List<ContinentEntity> contEntities){
+        //Creo una lista de DTO Vacia
+        List<ContinentDTO> ContinentDTO = new ArrayList<>();
+        //Con un for each recorro la lista contEntities, y por cada un dto, agrego y parseo la entidad donde estoy parado (entitiesConts)
+        for (ContinentEntity entitiesConts : contEntities) {
+            ContinentDTO.add(this.continentEntity2DTO(entitiesConts));
+        }
+        //y devuelvo la nueva lista de DTO
+        return ContinentDTO;
     }
 
 }

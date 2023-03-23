@@ -8,6 +8,8 @@ import com.icon.Practice.Service.ContinentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ContinentServiceImpl implements ContinentService {
 
@@ -17,13 +19,23 @@ public class ContinentServiceImpl implements ContinentService {
     private ContinentRepository continentRepository;
 
     public ContinentDTO save(ContinentDTO dto){
+        //llamo dentro del mapper a ContinentDTO2Entity para pasar los datos dto (pasados por parametro) a entidad
         ContinentEntity contEntity = continentMapper.continentDTO2Entity(dto);
-
+        //Una vez pasado a entidad, se hace la consulta al repositorio y los datos (contEntity) de la DB, se guardan en un objeto nuevo.
         ContinentEntity savedEntity = continentRepository.save(contEntity);
-
-        ContinentDTO continentResponse = continentMapper.ContinentEntity2DTO(savedEntity);
+        //Este ultimo objeto,una vez guardado, hay que reconvertirlo a DTO para poder ser devuelto, entonces llamo nuevamente al mapper ConinentEntity2DTO. Y en el return, devuelvo continentResponse (con los datos del DTO grabados).
+        ContinentDTO continentResponse = continentMapper.continentEntity2DTO(savedEntity);
         System.out.println("GUARDAR CONTINENTE");
-        return dto;
+        return continentResponse;
+    }
+
+    //Creo este metodo ya que ContinentService me obliga a crearlo a travez de la interfaz, con un override, pero se sobre escribe de la interfaz.
+    public List<ContinentDTO> getAllContinents() {
+        //Jpa nos provee el metodo que busca lo ya creado en la DB, por eso no hace falta pasar el DTO a entity
+        List<ContinentEntity> contEntities = continentRepository.findAll();
+        //Encontrada esta lista de continentes, lo guardo en este nuevo objeto y a traves del mapper, transformo esta lista (de entidades) a DTO con datos por parametro (contEntities)
+        List<ContinentDTO> continentResponse = continentMapper.continentEntityList2DTOList(contEntities);
+        return continentResponse;
     }
 
 }

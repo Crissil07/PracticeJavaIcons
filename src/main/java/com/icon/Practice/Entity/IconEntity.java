@@ -23,6 +23,7 @@ public class IconEntity {
     private Long id;
 
     private String photo;
+
     private String denomination;
 
     @Column(name = "created_date")

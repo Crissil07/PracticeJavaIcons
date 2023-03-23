@@ -5,10 +5,9 @@ import com.icon.Practice.Service.ContinentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 //Los controladores solo van a recibir una solicitud y devolver una respuesta. No tienen logica.
 @RestController
@@ -28,6 +27,14 @@ public class ContinentController {
         ContinentDTO savedContinent = continentService.save(continent);
         //201, continente guardado
         return ResponseEntity.status(HttpStatus.CREATED).body(savedContinent);
+    }
+
+    //Metodo para buscar todos los continentes creados
+    //El response entity va a hacer una lista de ContinentDTO - metodo: getAll.
+    @GetMapping
+    public ResponseEntity<List<ContinentDTO>> getAll(){
+        List<ContinentDTO> continents = continentService.getAllContinents();
+        return ResponseEntity.ok().body(continents);
     }
 
 }

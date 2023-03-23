@@ -40,7 +40,7 @@ public class CountryEntity {
     //Con esto busco info del objeto tipo continente entero.
     private ContinentEntity continent;
 
-    @Column(name = "continent_Id", nullable = false)
+    @Column(name = "continent_Id")
     //Con este atributo defino columna que no puede ser nula y va a tener un id de continente.
     //Y se Joinea con la table del continente a travez del id.
     //Con esto busco info del objeto tipo continente entero. Guardo y actualizo donde tengo el Id.
