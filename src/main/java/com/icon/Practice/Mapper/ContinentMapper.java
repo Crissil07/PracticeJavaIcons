@@ -37,13 +37,13 @@ public class ContinentMapper {
     //Con este metodo, recorro la lista de continentes que me llega por parametro. Traigo una lista de entidad
     public List<ContinentDTO> continentEntityList2DTOList (List<ContinentEntity> contEntities){
         //Creo una lista de DTO Vacia
-        List<ContinentDTO> ContinentDTO = new ArrayList<>();
+        List<ContinentDTO> ContinentDTOS = new ArrayList<>();
         //Con un for each recorro la lista contEntities, y por cada un dto, agrego y parseo la entidad donde estoy parado (entitiesConts)
         for (ContinentEntity entitiesConts : contEntities) {
-            ContinentDTO.add(this.continentEntity2DTO(entitiesConts));
+            ContinentDTOS.add(this.continentEntity2DTO(entitiesConts));
         }
         //y devuelvo la nueva lista de DTO
-        return ContinentDTO;
+        return ContinentDTOS;
     }
 
 }
